@@ -1,0 +1,27 @@
+[user]
+	email = george.kast@gmail.com
+	name = George Kastrinis
+	signingkey = 5BF25C770B76D626
+[push]
+	followTags = true
+[alias]
+	st = status
+	ci = commit
+	co = checkout
+	ap = add --patch
+[color]
+	ui = auto
+[core]
+	editor = vim
+	autocrlf = true
+	fileMode = false
+	excludesfile = /Users/gkastrinis/.gitignore_global
+[commit]
+	gpgsign = true
+	template = /Users/gkastrinis/.stCommitMsg
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
