@@ -85,7 +85,6 @@ alias tree='tree -C'
 alias uprc='source $HOME/.zshrc'
 alias up='sudo apt-get update ; sudo apt-get -y upgrade ; sudo apt-get -y dist-upgrade ; sudo apt-get autoclean ; sudo apt-get autoremove'
 alias vim='vim -O'
-alias fixgpg='pkill gpg-agent ; gpg-agent --daemon'
 #alias sshT='ssh -L 8080:localhost:$CLUE_PORT'
 #alias x='xdg-open'
 #alias yolo='echo "$(curl -s http://whatthecommit.com/index.txt)"'
@@ -131,6 +130,8 @@ syncall() {
 	if [ $(hostname) != 'draco.di.uoa.gr' ]; then echo "=> draco"; mirror mirror draco: ; fi
 	cd $ORIG_DIR
 }
+
+alias fixgpg='pkill gpg-agent ; gpg-agent --daemon'
 
 fixperms() {
 	find $1 -type d -exec chmod 700 {} \;
