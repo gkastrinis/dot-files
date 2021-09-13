@@ -111,9 +111,8 @@ case $(hostname) in
 		;;
 	'bellartix' )
 		export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
-		source $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 		;;
-	'centauri.di.uoa.gr' )
+	'centauri.di.uoa.gr' | 'draco.di.uoa.gr' )
 		export JAVA_HOME=/usr/lib/jvm/java-1.8.0
 		#export LOGICBLOX_HOME=/opt/lb/logicblox-3.10.14/logicblox
 		#export LD_LIBRARY_PATH=/usr/lib64
