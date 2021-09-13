@@ -108,6 +108,7 @@ esac
 case $(hostname) in
 	'almanac' )
 		export JULIA_PROJECT=$HOME/Work/raicode
+		source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 		;;
 	'bellartix' )
 		export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
