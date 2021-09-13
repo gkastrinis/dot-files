@@ -13,7 +13,7 @@
 	ui = auto
 [core]
 	editor = vim
-	autocrlf = true
+	autocrlf = input
 	fileMode = false
 	excludesfile = /Users/gkastrinis/.gitignore_global
 [commit]

@@ -132,4 +132,9 @@ syncall() {
 	cd $ORIG_DIR
 }
 
+fixperms() {
+	find $1 -type d -exec chmod 700 {} \;
+	find $1 -type f -exec chmod 600 {} \;
+}
+
 export PATH=/usr/local/bin:$JAVA_HOME/bin:$HOME/souffle-bin/bin/:$PATH:.
