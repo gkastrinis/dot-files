@@ -1,3 +1,5 @@
+syntax enable
+
 set tabstop=4       " Set tabstops to a width of four columns.
 set softtabstop=4   " Determine the behaviour of TAB and BACKSPACE keys with expandtab.
 set shiftwidth=4    " Determine the results of >>, <<, and ==.
@@ -24,19 +26,41 @@ set cursorline
 set textwidth=92    " Limit lines according to Julia's CONTRIBUTING guidelines.
 set colorcolumn=93  " Highlight first column beyond the line limit.
 
-syntax enable
-colorscheme torte
 
 call plug#begin('~/.vim/plugged')
+Plug 'airblade/vim-gitgutter'
+Plug 'doums/darcula'
 Plug 'JuliaEditorSupport/julia-vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'preservim/nerdtree'
+Plug 'preservim/nerdcommenter'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fugitive'
 call plug#end()
+
+colorscheme darcula
+
+let g:airline_section_x = ''
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_theme = 'simple'
+let g:fzf_preview_window = 'right:50%'
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6  }  }
+let g:NERDSpaceDelims = 1
+let g:NERDCommentEmptyLines = 1
+let g:NERDTrimTrailingWhitespace = 1
+
 
 set hlsearch
 hi Search ctermbg=Magenta
 hi Search ctermfg=White
-"hi ColorColumn ctermbg=Magenta
+hi ColorColumn ctermbg=Magenta
 
-highlight ExtraWhitespace ctermbg=Red guibg=Red
+hi ExtraWhitespace ctermbg=Red guibg=Red
 " Show trailing whitespace:
 match ExtraWhitespace /\s\+$/
 " Show trailing whitespace and spaces before a tab:
@@ -49,41 +73,36 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " according to the detected filetype
 filetype plugin indent on
 
-augroup templates
-	autocmd BufNewFile *.c 0r ~/.vim/templates/skeleton.c
-	autocmd BufNewFile *.cpp 0r ~/.vim/templates/skeleton.cpp
-augroup END
-
-au BufRead,BufNewFile *.rel setlocal expandtab
-au BufRead,BufNewFile *.jl  setlocal expandtab
-
-au BufRead,BufNewFile *.rel     set syntax=logiql
-au BufRead,BufNewFile *.dl      set syntax=logiql
-au BufRead,BufNewFile *.g4      set syntax=antlr4
-au BufRead,BufNewFile *.gradle  set syntax=groovy
-au BufRead,BufNewFile *.jimple  set syntax=java
+au BufRead,BufNewFile *.rel setlocal expandtab | set syntax=logiql
+au BufRead,BufNewFile *.jl setlocal expandtab
+au BufRead,BufNewFile *.dl set syntax=logiql
+au BufRead,BufNewFile *.g4 set syntax=antlr4
+au BufRead,BufNewFile *.gradlw set syntax=groovy
+au BufRead,BufNewFile *.jimple set syntax=java
 au BufRead,BufNewFile *.shimple set syntax=java
+au BufNewFile *.c 0r ~/.vim/templates/skeleton.c
+au BufNewFile *.cpp 0r ~/.vim/templates/skeleton.cpp
 
-noremap <C-H> <Esc>:noh<CR>
-noremap <C-L> <Esc>:set list!<CR>
-noremap <C-T> <Esc>:set expandtab!<CR>
-noremap <C-K> <Esc>/\s\+$<CR>
+
+let mapleader = ','
+
+noremap <C-H> :noh<CR>
+noremap <C-L> :set list!<CR>
+noremap <C-T> :set expandtab!<CR>
+noremap <C-N> :set number!<CR>
+noremap <C-K> /\s\+$<CR>
 " Paste won't change buffer contents
 xnoremap p pgvy
 xnoremap P Pgvy
-
+" Config search options
 nnoremap / /\v
 vnoremap / /\v
+" Moving around tabs and splits
+noremap <C-N> :tabp<CR>
+noremap <C-M> :tabn<CR>
+noremap <C-P> :wincmd w<CR>
 
-noremap <F12> <Esc>:syntax sync fromstart<CR>
-inoremap <F12> <C-o>:syntax sync fromstart<CR>
-
-noremap <C-Right> <Esc>:tabn<CR>
-inoremap <C-Right> <Esc>:tabn<CR>
-noremap <C-Left> <Esc>:tabp<CR>
-inoremap <C-Left> <Esc>:tabp<CR>
-" Backup shortcuts for tab navigation
-noremap <A-Right> <Esc>:tabn<CR>
-inoremap <A-Right> <Esc>:tabn<CR>
-noremap <A-Left> <Esc>:tabp<CR>
-inoremap <A-Left> <Esc>:tabp<CR>
+noremap <C-F> :NERDTreeToggle<CR>
+noremap <Leader>f :Files<CR>
+noremap <Leader>l :Lines<CR>
+"noremap <F12> <Esc>:syntax sync fromstart<CR>
