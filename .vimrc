@@ -37,12 +37,13 @@ Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive' " Git commands support
 call plug#end()
 
 colorscheme darcula
 
 let g:airline_section_x = ''
+let g:airline_section_z = '%p%% %#__accent_bold#%l(%v)/%L%{g:airline_symbols.maxlinenr}%#__restore__#'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
@@ -58,19 +59,16 @@ let g:NERDTrimTrailingWhitespace = 1
 set hlsearch
 hi Search ctermbg=Magenta
 hi Search ctermfg=White
-hi ColorColumn ctermbg=Magenta
+"hi ColorColumn ctermbg=Magenta
 
-hi ExtraWhitespace ctermbg=Red guibg=Red
-" Show trailing whitespace:
-match ExtraWhitespace /\s\+$/
-" Show trailing whitespace and spaces before a tab:
-match ExtraWhitespace /\s\+$\| \+\ze\t/
+hi ExtraWhitespace ctermbg=Red
+match ExtraWhitespace /\s\+$/           " Show trailing whitespace
+match ExtraWhitespace /\s\+$\| \+\ze\t/ " Show trailing whitespace and spaces before a tab
 
 " Uncomment the following to have Vim jump to the last position when reopening a file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-" Uncomment the following to have Vim load indentation rules and plugins
-" according to the detected filetype
+" Uncomment the following to have Vim load indentation rules and plugins according to the detected filetype
 filetype plugin indent on
 
 au BufRead,BufNewFile *.rel setlocal expandtab | set syntax=logiql
@@ -89,20 +87,17 @@ let mapleader = ','
 noremap <C-H> :noh<CR>
 noremap <C-L> :set list!<CR>
 noremap <C-T> :set expandtab!<CR>
-noremap <C-N> :set number!<CR>
-noremap <C-K> /\s\+$<CR>
+noremap <C-B> :set number! \| GitGutterToggle<CR>
 " Paste won't change buffer contents
 xnoremap p pgvy
 xnoremap P Pgvy
 " Config search options
 nnoremap / /\v
-vnoremap / /\v
 " Moving around tabs and splits
 noremap <C-N> :tabp<CR>
 noremap <C-M> :tabn<CR>
 noremap <C-P> :wincmd w<CR>
 
 noremap <C-F> :NERDTreeToggle<CR>
-noremap <Leader>f :Files<CR>
+noremap <Leader>k :Files<CR>
 noremap <Leader>l :Lines<CR>
-"noremap <F12> <Esc>:syntax sync fromstart<CR>
