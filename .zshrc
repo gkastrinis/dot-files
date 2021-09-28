@@ -138,4 +138,12 @@ fixperms() {
 	find $1 -type f -exec chmod 600 {} \;
 }
 
+f() {
+	FILE_PATTERN="$1"
+	TEXT_PATTERN="$2"
+	DIR="."
+	if [ "$#" -eq 3 ]; then DIR="$3" ; fi
+	grep --color=auto -I -rn --include=\*$FILE_PATTERN -e $TEXT_PATTERN $DIR
+}
+
 export PATH=/usr/local/bin:$JAVA_HOME/bin:$HOME/souffle-bin/bin/:$PATH:.
