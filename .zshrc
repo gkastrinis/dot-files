@@ -139,11 +139,8 @@ fixperms() {
 }
 
 f() {
-	FILE_PATTERN="$1"
-	TEXT_PATTERN="$2"
-	DIR="."
-	if [ "$#" -eq 3 ]; then DIR="$3" ; fi
-	grep --color=auto -I -rn --include=\*$FILE_PATTERN -e $TEXT_PATTERN $DIR
+	[[ "$#" -eq 3 ]] && DIR="$3" || DIR="."
+	grep --color=auto -I -rn --include=\*$1 -e $2 $DIR
 }
 
 export PATH=/usr/local/bin:$JAVA_HOME/bin:$HOME/souffle-bin/bin/:$PATH:.
