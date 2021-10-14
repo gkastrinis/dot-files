@@ -139,8 +139,9 @@ fixperms() {
 }
 
 f() {
+	[[ "$#" -ge 2 ]] && EXT="$2" || EXT="{jl,rel}"
 	[[ "$#" -eq 3 ]] && DIR="$3" || DIR="."
-	grep --color=auto -I -rn --include=\*$1 -e $2 $DIR
+	eval "grep --color=auto -I -rn -e \"$1\" --include=\*$EXT \"$DIR\""
 }
 
 export PATH=/usr/local/bin:$JAVA_HOME/bin:$HOME/souffle-bin/bin/:$PATH:.
