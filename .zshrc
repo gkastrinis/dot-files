@@ -144,4 +144,4 @@ f() {
 	eval "grep --color=auto -I -rn -e \"$1\" --include=\*$EXT \"$DIR\""
 }
 
-export PATH=/usr/local/bin:$JAVA_HOME/bin:$HOME/souffle-bin/bin/:$PATH:.
+export PATH=/usr/local/sbin:/usr/local/bin:$JAVA_HOME/bin:$HOME/souffle-bin/bin/:$PATH:.
