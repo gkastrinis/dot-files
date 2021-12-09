@@ -9,6 +9,7 @@
 	ci = commit
 	co = checkout
 	ap = add --patch
+	prune = remote update origin --prune
 [color]
 	ui = auto
 [core]
