@@ -7,9 +7,10 @@
 [alias]
 	st = status
 	ci = commit
-	co = checkout
+	go = checkout
+	br = checkout -b
 	ap = add --patch
-	prune = remote update origin --prune
+	fixbr = remote update origin --prune
 [color]
 	ui = auto
 [core]
