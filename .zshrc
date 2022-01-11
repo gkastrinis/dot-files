@@ -1,3 +1,7 @@
+#### FIG ENV VARIABLES ####
+# Please make sure this block is at the start of this file.
+[ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
+#### END FIG ENV VARIABLES ####
 export ZSH="$HOME/.oh-my-zsh"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
@@ -73,34 +77,26 @@ alias mv='mv -i'
 alias rm='rm -rf'
 alias scp='scp -r'
 alias mirror='rsync -avz --delete'
-alias df='df -h'
-alias diff='colordiff'
-alias vdiff='colordiff -y -W $(tput cols) --suppress-common-lines'
-alias vvdiff='colordiff -y -W $(tput cols)'
+alias cat=bat
+alias ls=exa
 alias du='du -csh'
-alias grep='grep --color=auto -I'
-alias grepr='grep --color=auto -I -r'
-alias pgrep='pgrep -l -f -u $(whoami)'
 alias tree='tree -C'
 alias uprc='source $HOME/.zshrc'
 alias up='sudo apt-get update ; sudo apt-get -y upgrade ; sudo apt-get -y dist-upgrade ; sudo apt-get autoclean ; sudo apt-get autoremove'
 alias vim='vim -p'
+alias hexyl=hexyl
 #alias sshT='ssh -L 8080:localhost:$CLUE_PORT'
 #alias x='xdg-open'
 #alias yolo='echo "$(curl -s http://whatthecommit.com/index.txt)"'
 
 case "$(uname -s)" in
 	Linux*)
-		alias ll='ls -lF --group-directories-first --color=auto'
-		alias ls='ls --color=auto'
 		alias gcc='gcc -ansi -pedantic -Wall -Wextra -W -Wshadow -std=c11'
 		alias g++='g++ -std=c++0x -pedantic -Wall -W -Wshadow'
 		eval `dircolors -b ~/.dircolors`
 		eval `keychain --eval id_rsa --quiet`
 		;;
 	Darwin*)
-		alias ll='ls -lFG'
-		alias ls='ls -G'
 		;;
 esac
 
@@ -138,6 +134,18 @@ fixperms() {
 	find $1 -type f -exec chmod 600 {} \;
 }
 
+#alias diff='colordiff'
+#alias vdiff='colordiff -y -W $(tput cols) --suppress-common-lines'
+#alias vvdiff='colordiff -y -W $(tput cols)'
+
+dif() {
+	diff -u $1 $2 | diff-so-fancy
+}
+
+alias grep='grep --color=auto -I'
+alias grepr='grep --color=auto -I -r'
+alias pgrep='pgrep -l -f -u $(whoami)'
+
 f() {
 	[[ "$#" -ge 2 ]] && EXT="$2" || EXT="{jl,rel}"
 	[[ "$#" -eq 3 ]] && DIR="$3" || DIR="."
@@ -150,3 +158,8 @@ f0() {
 }
 
 export PATH=/usr/local/sbin:/usr/local/bin:$JAVA_HOME/bin:$HOME/souffle-bin/bin/:$PATH:.
+
+#### FIG ENV VARIABLES ####
+# Please make sure this block is at the end of this file.
+[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
+#### END FIG ENV VARIABLES ####
