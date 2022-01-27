@@ -85,6 +85,7 @@ alias uprc='source $HOME/.zshrc'
 alias up='sudo apt-get update ; sudo apt-get -y upgrade ; sudo apt-get -y dist-upgrade ; sudo apt-get autoclean ; sudo apt-get autoremove'
 alias vim='vim -p'
 alias hexyl=hexyl
+alias jl='julia --startup-file=no'
 #alias sshT='ssh -L 8080:localhost:$CLUE_PORT'
 #alias x='xdg-open'
 #alias yolo='echo "$(curl -s http://whatthecommit.com/index.txt)"'
@@ -147,14 +148,9 @@ alias grepr='grep --color=auto -I -r'
 alias pgrep='pgrep -l -f -u $(whoami)'
 
 f() {
-	[[ "$#" -ge 2 ]] && EXT="$2" || EXT="{jl,rel}"
-	[[ "$#" -eq 3 ]] && DIR="$3" || DIR="."
-	eval "grep --color=auto -I -rn -e \"$1\" --include=\*$EXT \"$DIR\""
-}
-
-f0() {
 	[[ "$#" -eq 2 ]] && DIR="$2" || DIR="."
-	eval "grep --color=auto -I -rn -e \"$1\" \"$DIR\""
+	[[ "$#" -ge 3 ]] && EXT="$3" || EXT="{jl,rel}"
+	eval "grep --color=auto -I -rn -e \"$1\" --include=\*$EXT \"$DIR\""
 }
 
 export PATH=/usr/local/sbin:/usr/local/bin:$JAVA_HOME/bin:$HOME/souffle-bin/bin/:$PATH:.
