@@ -66,7 +66,7 @@ plugins=(command-not-found)
 setopt autocd extendedglob nomatch notify inc_append_history share_history
 source $ZSH/oh-my-zsh.sh
 
-export EDITOR=vim
+export EDITOR="code -w"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
@@ -140,7 +140,8 @@ fixperms() {
 #alias vvdiff='colordiff -y -W $(tput cols)'
 
 dif() {
-	diff -u $1 $2 | diff-so-fancy
+	#diff -u $1 $2 | diff-so-fancy
+	diff -y -W $(tput cols) $1 $2 | diff-so-fancy
 }
 
 alias grep='grep --color=auto -I'
@@ -148,7 +149,7 @@ alias grepr='grep --color=auto -I -r'
 alias pgrep='pgrep -l -f -u $(whoami)'
 
 f() {
-	[[ "$#" -eq 2 ]] && DIR="$2" || DIR="."
+	[[ "$#" -ge 2 ]] && DIR="$2" || DIR="."
 	[[ "$#" -ge 3 ]] && EXT="$3" || EXT="{jl,rel}"
 	eval "grep --color=auto -I -rn -e \"$1\" --include=\*$EXT \"$DIR\""
 }

@@ -11,6 +11,7 @@
 	br = checkout -b
 	ap = add --patch
 	fixbr = remote update origin --prune
+	snitch = blame
 [color]
 	ui = auto
 [core]
