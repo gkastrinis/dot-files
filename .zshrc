@@ -53,7 +53,7 @@ ZSH_THEME="terminalparty"
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
-ZSH_THEME_RANDOM_CANDIDATES=( "agnoster" "terminalparty" "rkj" "sporty_256" )
+#ZSH_THEME_RANDOM_CANDIDATES=( "agnoster" "terminalparty" "rkj" "sporty_256" )
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -79,10 +79,10 @@ alias scp='scp -r'
 alias mirror='rsync -avz --delete'
 alias cat=bat
 alias ls=exa
-alias du='du -csh'
+#alias du='du -csh'
 alias tree='tree -C'
 alias uprc='source $HOME/.zshrc'
-alias up='sudo apt-get update ; sudo apt-get -y upgrade ; sudo apt-get -y dist-upgrade ; sudo apt-get autoclean ; sudo apt-get autoremove'
+#alias up='sudo apt-get update ; sudo apt-get -y upgrade ; sudo apt-get -y dist-upgrade ; sudo apt-get autoclean ; sudo apt-get autoremove'
 alias vim='vim -p'
 alias hexyl=hexyl
 alias jl='julia --startup-file=no'
@@ -128,12 +128,12 @@ syncall() {
 	cd $ORIG_DIR
 }
 
-alias fixgpg='pkill gpg-agent ; gpg-agent --daemon'
+#alias fixgpg='pkill gpg-agent ; gpg-agent --daemon'
 
-fixperms() {
-	find $1 -type d -exec chmod 700 {} \;
-	find $1 -type f -exec chmod 600 {} \;
-}
+#fixperms() {
+#	find $1 -type d -exec chmod 700 {} \;
+#	find $1 -type f -exec chmod 600 {} \;
+#}
 
 #alias diff='colordiff'
 #alias vdiff='colordiff -y -W $(tput cols) --suppress-common-lines'
