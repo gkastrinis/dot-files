@@ -78,8 +78,6 @@ alias tree='tree -C'
 alias uprc='source $HOME/.zshrc'
 #alias up='sudo apt-get update ; sudo apt-get -y upgrade ; sudo apt-get -y dist-upgrade ; sudo apt-get autoclean ; sudo apt-get autoremove'
 alias vim='vim -p'
-alias jl='JULIA_DEPOT_PATH=$HOME/.julia-depots/$(basename $PWD):$HOME/.julia JULIA_PROJECT=$PWD /usr/local/bin/julia'
-alias julia='JULIA_PROJECT=$PWD /usr/local/bin/julia'
 alias hexyl=hexyl
 #alias sshT='ssh -L 8080:localhost:$CLUE_PORT'
 #alias x='xdg-open'
@@ -105,17 +103,6 @@ f() {
 	eval "grep --color=auto -I -rn -e \"$1\" --include=\*$EXT \"$DIR\""
 }
 
-gobranch() {
-	MASTER=$HOME/Work/raicode
-	BR_NAME=$1
-	if [ "$(pwd)" != "$MASTER" ] ; then echo "Go to $MASTER first!"; return; fi
-	cp . ../$BR_NAME
-	cd ../$BR_NAME
-	git go -b $BR_NAME
-	mkdir -p $HOME/.julia-depots/$BR_NAME/config
-	ln -s -f $HOME/.julia/config/startup.jl $HOME/.julia-depots/$BR_NAME/config
-}
-
 case "$(uname -s)" in
 	Linux*)
 		alias gcc='gcc -ansi -pedantic -Wall -Wextra -W -Wshadow -std=c11'
@@ -130,6 +117,23 @@ esac
 case $(hostname) in
 	'almanac' )
 		source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+		export CLASSPATH=".:/usr/local/lib/antlr-4.9.3-complete.jar:$CLASSPATH"
+		alias antlr4='java -jar /usr/local/lib/antlr-4.9.3-complete.jar'
+
+		alias jl='JULIA_DEPOT_PATH=$HOME/.julia-depots/$(basename $PWD):$HOME/.julia JULIA_PROJECT=$PWD /usr/local/bin/julia'
+		alias julia='JULIA_PROJECT=$PWD /usr/local/bin/julia'
+
+		gobranch() {
+			MASTER=$HOME/Work/raicode
+			BR_NAME=$1
+			if [ "$(pwd)" != "$MASTER" ] ; then echo "Go to $MASTER first!"; return; fi
+			cp . ../$BR_NAME
+			cd ../$BR_NAME
+			git go -b $BR_NAME
+			mkdir -p $HOME/.julia-depots/$BR_NAME/config
+			ln -s -f $HOME/.julia/config/startup.jl $HOME/.julia-depots/$BR_NAME/config
+		}
 		;;
 	'bellartix' )
 		export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
@@ -150,7 +154,7 @@ syncall() {
 	cd $ORIG_DIR
 }
 
-export PATH=/usr/local/sbin:/usr/local/bin:$JAVA_HOME/bin:$HOME/souffle-bin/bin/:$PATH:.
+export PATH=/usr/local/sbin:/usr/local/bin:$JAVA_HOME/bin:$HOME/souffle-bin/bin/:$HOME/Work/rai-cli/build:$PATH:.
 
 #### FIG ENV VARIABLES ####
 # Please make sure this block is at the end of this file.
