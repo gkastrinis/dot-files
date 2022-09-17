@@ -1,7 +1,5 @@
-#### FIG ENV VARIABLES ####
-# Please make sure this block is at the start of this file.
-[ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
-#### END FIG ENV VARIABLES ####
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 export ZSH="$HOME/.oh-my-zsh"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
@@ -70,11 +68,11 @@ alias scp='scp -r'
 alias mirror='rsync -avz --delete'
 alias cat=bat
 alias ls=exa
-alias grep='grep --color=auto -I'
-alias grepr='grep --color=auto -I -r'
+alias ag='ag --noheading'
+alias grepr='grep --color=auto -I -rn'
 alias pgrep='pgrep -l -f -u $(whoami)'
 #alias du='du -csh'
-alias tree='tree -C'
+#alias tree='tree -C'
 alias uprc='source $HOME/.zshrc'
 #alias up='sudo apt-get update ; sudo apt-get -y upgrade ; sudo apt-get -y dist-upgrade ; sudo apt-get autoclean ; sudo apt-get autoremove'
 alias vim='vim -p'
@@ -82,25 +80,20 @@ alias hexyl=hexyl
 #alias sshT='ssh -L 8080:localhost:$CLUE_PORT'
 #alias x='xdg-open'
 #alias fixgpg='pkill gpg-agent ; gpg-agent --daemon'
+alias cls='yes "" | head -$(tput lines)'
 
 #fixperms() {
 #	find $1 -type d -exec chmod 700 {} \;
 #	find $1 -type f -exec chmod 600 {} \;
 #}
 
-#alias diff='colordiff'
-#alias vdiff='colordiff -y -W $(tput cols) --suppress-common-lines'
+alias diff='colordiff'
+alias vdiff='colordiff -y -W $(tput cols) --suppress-common-lines'
 #alias vvdiff='colordiff -y -W $(tput cols)'
 
 dif() {
 	#diff -u $1 $2 | diff-so-fancy
 	diff -y -W $(tput cols) $1 $2 | diff-so-fancy
-}
-
-f() {
-	[[ "$#" -ge 2 ]] && DIR="$2" || DIR="."
-	[[ "$#" -ge 3 ]] && EXT="$3" || EXT="{jl,rel}"
-	eval "grep --color=auto -I -rn -e \"$1\" --include=\*$EXT \"$DIR\""
 }
 
 case "$(uname -s)" in
@@ -120,20 +113,7 @@ case $(hostname) in
 
 		export CLASSPATH=".:/usr/local/lib/antlr-4.9.3-complete.jar:$CLASSPATH"
 		alias antlr4='java -jar /usr/local/lib/antlr-4.9.3-complete.jar'
-
-		alias jl='JULIA_DEPOT_PATH=$HOME/.julia-depots/$(basename $PWD):$HOME/.julia JULIA_PROJECT=$PWD /usr/local/bin/julia'
 		alias julia='JULIA_PROJECT=$PWD /usr/local/bin/julia'
-
-		gobranch() {
-			MASTER=$HOME/Work/raicode
-			BR_NAME=$1
-			if [ "$(pwd)" != "$MASTER" ] ; then echo "Go to $MASTER first!"; return; fi
-			cp . ../$BR_NAME
-			cd ../$BR_NAME
-			git go -b $BR_NAME
-			mkdir -p $HOME/.julia-depots/$BR_NAME/config
-			ln -s -f $HOME/.julia/config/startup.jl $HOME/.julia-depots/$BR_NAME/config
-		}
 		;;
 	'bellartix' )
 		export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
@@ -156,7 +136,5 @@ syncall() {
 
 export PATH=/usr/local/sbin:/usr/local/bin:$JAVA_HOME/bin:$HOME/souffle-bin/bin/:$HOME/Work/rai-cli/build:$PATH:.
 
-#### FIG ENV VARIABLES ####
-# Please make sure this block is at the end of this file.
-[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
-#### END FIG ENV VARIABLES ####
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
