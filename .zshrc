@@ -69,18 +69,19 @@ alias mirror='rsync -avz --delete'
 alias cat=bat
 alias ls=exa
 alias ag='ag --noheading'
+alias agg='cls ; ag'
 alias grepr='grep --color=auto -I -rn'
 alias pgrep='pgrep -l -f -u $(whoami)'
 #alias du='du -csh'
 #alias tree='tree -C'
 alias uprc='source $HOME/.zshrc'
-#alias up='sudo apt-get update ; sudo apt-get -y upgrade ; sudo apt-get -y dist-upgrade ; sudo apt-get autoclean ; sudo apt-get autoremove'
 alias vim='vim -p'
 alias hexyl=hexyl
-#alias sshT='ssh -L 8080:localhost:$CLUE_PORT'
 #alias x='xdg-open'
 #alias fixgpg='pkill gpg-agent ; gpg-agent --daemon'
 alias cls='yes "" | head -$(tput lines)'
+alias gcc='gcc -ansi -pedantic -Wall -Wextra -W -Wshadow -std=c11'
+alias g++='g++ -std=c++0x -pedantic -Wall -W -Wshadow'
 
 #fixperms() {
 #	find $1 -type d -exec chmod 700 {} \;
@@ -98,8 +99,6 @@ dif() {
 
 case "$(uname -s)" in
 	Linux*)
-		alias gcc='gcc -ansi -pedantic -Wall -Wextra -W -Wshadow -std=c11'
-		alias g++='g++ -std=c++0x -pedantic -Wall -W -Wshadow'
 		eval `dircolors -b ~/.dircolors`
 		eval `keychain --eval id_rsa --quiet`
 		;;
@@ -110,29 +109,25 @@ esac
 case $(hostname) in
 	'almanac' )
 		source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 		export CLASSPATH=".:/usr/local/lib/antlr-4.9.3-complete.jar:$CLASSPATH"
 		alias antlr4='java -jar /usr/local/lib/antlr-4.9.3-complete.jar'
 		alias julia='JULIA_PROJECT=$PWD /usr/local/bin/julia'
 		;;
-	'bellartix' )
-		export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
-		;;
-	'centauri.di.uoa.gr' | 'draco.di.uoa.gr' )
-		export JAVA_HOME=/usr/lib/jvm/java-1.8.0
+	'Anorak' )
+		alias up='sudo apt-get update ; sudo apt-get -y upgrade ; sudo apt-get -y dist-upgrade ; sudo apt-get autoclean ; sudo apt-get autoremove'
+		#alias sshT='ssh -L 8080:localhost:$WAT_PORT
 		;;
 esac
 
-syncall() {
-	ORIG_DIR=$(pwd)
-	if [ $(hostname) = 'Anorak' ]; then cd /mnt/d ;
-	else cd $HOME ; fi
-
-	if [ $(hostname) != 'bellatrix' ]; then echo "=> bellatrix"; mirror mirror bellatrix: ; fi
-	if [ $(hostname) != 'centauri.di.uoa.gr' ]; then echo "=> centauri"; mirror mirror centauri: ; fi
-	if [ $(hostname) != 'draco.di.uoa.gr' ]; then echo "=> draco"; mirror mirror draco: ; fi
-	cd $ORIG_DIR
-}
+#syncall() {
+#	ORIG_DIR=$(pwd)
+#	if [ $(hostname) = 'Anorak' ]; then cd /mnt/d ;
+#	else cd $HOME ; fi
+#	if [ $(hostname) != 'bellatrix' ]; then echo "=> bellatrix"; mirror mirror bellatrix: ; fi
+#	if [ $(hostname) != 'centauri.di.uoa.gr' ]; then echo "=> centauri"; mirror mirror centauri: ; fi
+#	if [ $(hostname) != 'draco.di.uoa.gr' ]; then echo "=> draco"; mirror mirror draco: ; fi
+#	cd $ORIG_DIR
+#}
 
 export PATH=/usr/local/sbin:/usr/local/bin:$JAVA_HOME/bin:$HOME/souffle-bin/bin/:$HOME/Work/rai-cli/build:$PATH:.
 
