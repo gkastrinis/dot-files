@@ -1,6 +1,4 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
-export ZSH="$HOME/.oh-my-zsh"
+	#export ZSH="$HOME/.oh-my-zsh"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -32,18 +30,18 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Uncomment the following line if pasting URLs and other text is messed up.
 DISABLE_MAGIC_FUNCTIONS="true"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="terminalparty"
-#ZSH_THEME="random"
+	# Set name of the theme to load --- if set to "random", it will
+	# load a random theme each time oh-my-zsh is loaded, in which case,
+	# to know which specific one was loaded, run: echo $RANDOM_THEME
+	# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+	#ZSH_THEME="terminalparty"
+	#ZSH_THEME="random"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-#ZSH_THEME_RANDOM_CANDIDATES=( "agnoster" "terminalparty" "rkj" "sporty_256" )
+	# Set list of themes to pick from when loading at random
+	# Setting this variable when ZSH_THEME=random will cause zsh to load
+	# a theme from this variable instead of looking in $ZSH/themes/
+	# If set to an empty array, this variable will have no effect.
+	#ZSH_THEME_RANDOM_CANDIDATES=( "agnoster" "terminalparty" "rkj" "sporty_256" )
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -53,7 +51,7 @@ ZSH_THEME="terminalparty"
 plugins=(command-not-found)
 
 setopt autocd extendedglob nomatch notify inc_append_history share_history
-source $ZSH/oh-my-zsh.sh
+#source $ZSH/oh-my-zsh.sh
 
 export EDITOR="code -w"
 export LC_ALL=en_US.UTF-8
@@ -65,9 +63,10 @@ alias cp='cp -i -r'
 alias mv='mv -i'
 alias rm='rm -rf'
 alias scp='scp -r'
-alias mirror='rsync -avz --delete'
+#alias mirror='rsync -avz --delete'
 alias cat=bat
 alias ls=exa
+alias ll='ls -l'
 alias ag='ag --noheading'
 alias agg='cls ; ag'
 alias grepr='grep --color=auto -I -rn'
@@ -76,7 +75,7 @@ alias pgrep='pgrep -l -f -u $(whoami)'
 #alias tree='tree -C'
 alias uprc='source $HOME/.zshrc'
 alias vim='vim -p'
-alias hexyl=hexyl
+#alias hexyl=hexyl
 #alias x='xdg-open'
 #alias fixgpg='pkill gpg-agent ; gpg-agent --daemon'
 alias cls='yes "" | head -$(tput lines)'
@@ -111,7 +110,7 @@ case $(hostname) in
 		source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 		export CLASSPATH=".:/usr/local/lib/antlr-4.9.3-complete.jar:$CLASSPATH"
 		alias antlr4='java -jar /usr/local/lib/antlr-4.9.3-complete.jar'
-		alias julia='JULIA_PROJECT=$PWD /usr/local/bin/julia'
+		alias julia='JULIA_PROJECT=$PWD /usr/local/bin/julia -t 8'
 		;;
 	'Anorak' )
 		alias up='sudo apt-get update ; sudo apt-get -y upgrade ; sudo apt-get -y dist-upgrade ; sudo apt-get autoclean ; sudo apt-get autoremove'
@@ -129,7 +128,4 @@ esac
 #	cd $ORIG_DIR
 #}
 
-export PATH=/usr/local/sbin:/usr/local/bin:$JAVA_HOME/bin:$HOME/souffle-bin/bin/:$HOME/Work/rai-cli/build:$PATH:.
-
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+export PATH=/usr/local/sbin:/usr/local/bin:$JAVA_HOME/bin:$HOME/dot-files:$PATH:.

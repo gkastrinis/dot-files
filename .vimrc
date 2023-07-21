@@ -28,15 +28,9 @@ set colorcolumn=93  " Highlight first column beyond the line limit.
 
 
 call plug#begin('~/.vim/plugged')
-Plug 'airblade/vim-gitgutter'
 Plug 'doums/darcula'
-Plug 'JuliaEditorSupport/julia-vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-fugitive' " Git commands support
 call plug#end()
 
 colorscheme darcula

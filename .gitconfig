@@ -12,6 +12,7 @@
 	ap = add --patch
 	fixbr = remote update origin --prune
 	snitch = blame
+	go-treesitter = checkout 61aced28e47f9a88f1a137692f96d93bae8643a8~1
 [color]
 	ui = auto
 [core]
