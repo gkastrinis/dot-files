@@ -44,6 +44,9 @@ echo "(env/set \"RAI_PATH\" \"$dir\")" > $env/env.lisp
 echo "(env/set \"JULIA_PROJECT\" \"$dir\")" >> $env/env.lisp
 echo "(env/set \"JULIA_DEPOT_PATH\" \"$depot:\")" >> $env/env.lisp
 echo "(env/set \"JULIA_LOAD_PATH\" \"$depot:$HOME/.julia:\")" >> $env/env.lisp
+echo "(env/set \"RAI_PRINT_CONSTANTS_HASHED\" \"42\")" >> $env/env.lisp
+#echo "(env/set \"RAI_TRACEVIEW\" \"true\")" >> $env/env.lisp
+
 shadowenv trust
 
 set +x

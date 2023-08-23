@@ -28,12 +28,9 @@ set colorcolumn=93  " Highlight first column beyond the line limit.
 
 
 call plug#begin('~/.vim/plugged')
-Plug 'doums/darcula'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
-
-colorscheme darcula
 
 let g:airline_section_x = ''
 let g:airline_section_z = '%p%% %#__accent_bold#%l(%v)/%L%{g:airline_symbols.maxlinenr}%#__restore__#'

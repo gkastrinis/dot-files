@@ -1,5 +1,4 @@
 DISABLE_UPDATE_PROMPT="true"
-export UPDATE_ZSH_DAYS=8
 HYPHEN_INSENSITIVE="true"
 ENABLE_CORRECTION="true"
 # Uncomment the following line if you want to disable marking untracked files
@@ -8,6 +7,7 @@ ENABLE_CORRECTION="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Uncomment the following line if pasting URLs and other text is messed up.
 DISABLE_MAGIC_FUNCTIONS="true"
+export UPDATE_ZSH_DAYS=8
 
 setopt autocd extendedglob nomatch notify inc_append_history share_history
 
@@ -75,6 +75,10 @@ case $(hostname) in
 		#alias sshT='ssh -L 8080:localhost:$WAT_PORT
 		;;
 esac
+
+#PROMPT='%1~ 👺 '
+#PROMPT='%1~ 🥑 '
+PROMPT='%1~ 🤙 '
 
 #syncall() {
 #	ORIG_DIR=$(pwd)
