@@ -5,8 +5,8 @@ set -x
 branch=$1
 shift
 
-src="$HOME/Work/raicodes"
-prototype_dir="$src/../prototype"
+src="$HOME/Work"
+prototype_dir="$src/prototype"
 dir="$src/$branch"
 depot="$src/.raicode-depots/$branch"
 
