@@ -5,8 +5,8 @@
       "alignment": "left",
       "segments": [
         {
-          "background": "#0077c2",
-          "foreground": "#fff",
+          "background": "#12eb02",
+          "foreground": "#FFF",
           "style": "diamond",
           "leading_diamond": "\ue0b6",
           "trailing_diamond": "\ue0c6",

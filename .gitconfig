@@ -1,7 +1,7 @@
 [user]
 	email = george.kast@gmail.com
 	name = George Kastrinis
-	signingkey = 5BF25C770B76D626
+	signingkey = 6F8F256C7D93B9EE441FD603B2160BDF58B625D6
 [push]
 	followTags = true
 [alias]
@@ -11,18 +11,23 @@
 	br = checkout -b
 	ap = add --patch
 	fixbr = remote update origin --prune
-	snitch = blame
-	go-treesitter = checkout 61aced28e47f9a88f1a137692f96d93bae8643a8~1
+	merge = merge --no-edit
 [color]
 	ui = auto
 [core]
-	editor = vim
+	editor = nvim
 	autocrlf = input
-	excludesfile = /Users/gkastrinis/.gitignore_global
+	excludesfile = /Users/georgekastrinis/.gitignore_global
 	filemode = false
 	pager = diff-so-fancy | less --tabs=4 -RFX
 [commit]
 	gpgsign = true
-	template = /Users/gkastrinis/.stCommitMsg
+	template = /Users/georgekastrinis/.stCommitMsg
 [interactive]
 	diffFilter = diff-so-fancy --patch
+[gpg]
+	program = /usr/local/MacGPG2/bin/gpg2
+[tag]
+	forceSignAnnotated = true
+[merge]
+	tool = nvimdiff
