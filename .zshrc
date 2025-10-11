@@ -15,8 +15,8 @@ autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-bindkey "^[[A" up-line-or-beginning-search # Up
-bindkey "^[[B" down-line-or-beginning-search # Down
+bindkey "^[[A" up-line-or-beginning-search
+bindkey "^[[B" down-line-or-beginning-search
 
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -29,25 +29,13 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export TERM=xterm-256color
 
-#alias ls='ls --color=auto'
-#alias ll='ls -l'
 alias ls='lsd'
 alias ll='lsd -l'
 alias lt='lsd -l --tree'
-alias cp='cp -i -r'
-alias mv='mv -i'
-alias rm='rm -rf'
-#alias scp='scp -r'
 #alias mirror='rsync -avz --delete'
 #alias cat=bat
-#alias ag='ag --noheading -s'
-#alias agg='cls ; ag'
-#alias grepr='grep --color=auto -I -rn'
 #alias pgrep='pgrep -l -f -u $(whoami)'
-#alias du='du -csh'
-#alias tree='tree -C'
 alias uprc='source $HOME/.zshrc'
-#alias vim='vim -p'
 #alias x='xdg-open'
 #alias fixgpg='pkill gpg-agent ; gpg-agent --daemon'
 alias cls='yes "" | head -$(tput lines)'
@@ -62,12 +50,10 @@ alias vin='nvim'
 
 #case $(hostname) in
 #	'almanac' )
-		#source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 		#export CLASSPATH=".:/usr/local/lib/antlr-4.9.3-complete.jar:$CLASSPATH"
 		#alias antlr4='java -jar /usr/local/lib/antlr-4.9.3-complete.jar'
 #		;;
 #	'Anorak' )
-		#alias up='sudo apt-get update ; sudo apt-get -y upgrade ; sudo apt-get -y dist-upgrade ; sudo apt-get autoclean ; sudo apt-get autoremove'
 		#alias sshT='ssh -L 8080:localhost:$WAT_PORT
 #		;;
 #esac
