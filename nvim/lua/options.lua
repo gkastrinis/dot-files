@@ -32,8 +32,8 @@ vim.o.scrolloff = 10
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
 vim.o.confirm = true
-vim.o.textwidth = 92
-vim.o.colorcolumn = "93"
+-- vim.o.textwidth = 92
+-- vim.o.colorcolumn = "93"
 
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.

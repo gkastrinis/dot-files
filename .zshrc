@@ -29,6 +29,8 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export TERM=xterm-256color
 
+alias cp='cp -r'
+alias rm='rm -r'
 alias ls='lsd'
 alias ll='lsd -l'
 alias lt='lsd -l --tree'
