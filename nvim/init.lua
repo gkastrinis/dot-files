@@ -40,6 +40,8 @@ require("lazy").setup({
 		end,
 	},
 
+	"NMAC427/guess-indent.nvim",
+	"zhimsel/vim-stay",
 	-- imports anything under `lua/plugings/*lua`
 	-- { import = "plugins" },
 	require("plugins.toggleterm"),
@@ -52,25 +54,7 @@ require("lazy").setup({
 	require("plugins.conform"),
 	require("plugins.gitsigns"),
 	require("plugins.whichkey"),
-
-	"NMAC427/guess-indent.nvim",
-	"zhimsel/vim-stay",
-
-	{
-		"folke/todo-comments.nvim",
-		event = "VimEnter",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		opts = { signs = false },
-	},
-
-	{
-		"navarasu/onedark.nvim",
-		priority = 1000, -- Make sure to load this before all the other start plugins.
-		config = function()
-			require("onedark").setup({ style = "deep" })
-			require("onedark").load()
-		end,
-	},
+	require("plugins.todo"),
 
 	{
 		"nvim-lualine/lualine.nvim",
@@ -79,6 +63,24 @@ require("lazy").setup({
 			require("lualine").setup({ options = { theme = "molokai" } })
 		end,
 	},
+	{
+		"f-person/auto-dark-mode.nvim",
+		opts = {
+			update_interval = 1000,
+			set_dark_mode = function()
+				-- vim.api.nvim_set_option("background", "dark")
+				-- vim.cmd("colorscheme github_dark")
+				vim.cmd("colorscheme cyberdream")
+			end,
+			set_light_mode = function()
+				-- vim.api.nvim_set_option("background", "light")
+				vim.cmd("colorscheme modus_operandi")
+			end,
+		},
+	},
+	{ "miikanissi/modus-themes.nvim", priority = 1000, lazy = false },
+	{ "projekt0n/github-nvim-theme", priority = 1000, lazy = false },
+	{ "scottmckendry/cyberdream.nvim", priority = 1000, lazy = false },
 }, {
 	ui = {
 		-- If you are using a Nerd Font: set icons to an empty table which will use the

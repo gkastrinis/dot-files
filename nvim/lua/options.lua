@@ -51,3 +51,12 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.hl.on_yank()
 	end,
 })
+
+vim.api.nvim_create_autocmd("BufNewFile", {
+	pattern = "*.py",
+	callback = function()
+		if vim.fn.line("$") == 1 and vim.fn.getline(1) == "" then
+			vim.cmd("0r ~/.config/nvim/blueprints/blueprint.py")
+		end
+	end,
+})
