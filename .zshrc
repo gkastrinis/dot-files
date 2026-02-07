@@ -23,32 +23,28 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 autoload -U colors && colors
 
-export EDITOR="code -w"
+export VISUAL="nvim"
+export EDITOR="nvim"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export TERM=xterm-256color
 
 alias cp='cp -r'
-alias rm='rm -r'
+alias rm='rm -rf'
 alias ls='lsd'
 alias ll='lsd -l'
 alias lt='lsd -l --tree'
-#alias mirror='rsync -avz --delete'
-#alias cat=bat
+alias cat=bat
 #alias pgrep='pgrep -l -f -u $(whoami)'
 alias uprc='source $HOME/.zshrc'
 #alias x='xdg-open'
 #alias fixgpg='pkill gpg-agent ; gpg-agent --daemon'
 alias cls='yes "" | head -$(tput lines)'
-alias gcc='gcc -ansi -pedantic -Wall -Wextra -W -Wshadow -std=c11'
-alias g++='g++ -std=c++0x -pedantic -Wall -W -Wshadow'
-alias python=python3
 #alias tic80='tic80 --skip --fs=.'
 alias jl='julia -t 8'
-alias pytest='pytest -W ignore::DeprecationWarning -s'
-alias tea='$HOME/Work/relationalai-python/scripts/test/test_ea.sh'
 alias vin='nvim'
+alias v='nvim'
 
 #case $(hostname) in
 #	'almanac' )
@@ -66,6 +62,8 @@ export PATH=$HOME/nvim-macos-x86_64-nightly/bin:$PATH
 #export PATH="/Applications/tic80.app/Contents/MacOS/:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="$HOME/.julia/artifacts/d10d213b97cf181a9138de58f6e9d01156d4b3bc/bin/:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/opt/python@3.13/libexec/bin:$PATH"
 
 # >>> juliaup initialize >>>
 
@@ -79,3 +77,4 @@ export PATH
 source $HOME/Work/pyautoenv/pyautoenv.plugin.zsh
 
 eval "$(oh-my-posh init zsh --config ~/gkastrinis.info.json)"
+export PATH="$HOME/.local/bin:$PATH"
