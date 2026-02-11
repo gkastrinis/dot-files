@@ -2,6 +2,7 @@ return {
 	"hrsh7th/cmp-nvim-lsp",
 	{
 		"L3MON4D3/LuaSnip",
+		lazy = true,
 		dependencies = {
 			"saadparwaiz1/cmp_luasnip",
 			"gkastrinis/friendly-snippets",
@@ -9,10 +10,18 @@ return {
 	},
 	{
 		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
 		config = function()
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
-			require("luasnip.loaders.from_vscode").load()
+			
+			-- Lazy load snippets on first insert
+			vim.api.nvim_create_autocmd("InsertEnter", {
+				once = true,
+				callback = function()
+					require("luasnip.loaders.from_vscode").lazy_load()
+				end,
+			})
 
 			cmp.setup({
 				snippet = {

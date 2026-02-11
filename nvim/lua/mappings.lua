@@ -15,5 +15,6 @@ vim.keymap.set(
 
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
-local easypick = require("easypick")
-vim.keymap.set("n", "<leader>g", easypick.changed_files, { desc = "[G]it changes" })
+vim.keymap.set("n", "<leader>g", function()
+	require("easypick").changed_files()
+end, { desc = "[G]it changes" })

@@ -19,6 +19,10 @@ rtp:prepend(lazypath)
 require("lazy").setup({
 	{
 		"goolord/alpha-nvim",
+		lazy = false,
+		cond = function()
+			return vim.fn.argc() == 0 -- Only load if no file was opened
+		end,
 		dependencies = { "nvim-mini/mini.icons" },
 		config = function()
 			local alpha = require("alpha")
@@ -41,46 +45,52 @@ require("lazy").setup({
 	},
 
 	"NMAC427/guess-indent.nvim",
-	"zhimsel/vim-stay",
-	-- imports anything under `lua/plugings/*lua`
-	-- { import = "plugins" },
-	require("plugins.toggleterm"),
-	require("plugins.telescope"),
-	require("plugins.easypick"),
-	require("plugins.treesitter"),
-	require("plugins.lspconfig"),
-	require("plugins.lazydev"),
-	require("plugins.completion"),
-	require("plugins.conform"),
-	require("plugins.gitsigns"),
-	require("plugins.whichkey"),
-	require("plugins.todo"),
+	{
+		"zhimsel/vim-stay",
+		event = "BufReadPost",
+	},
+	-- Load plugin configurations
+	-- Note: These are just returning table specs, not executing configs
+	{ import = "plugins.toggleterm" },
+	{ import = "plugins.telescope" },
+	{ import = "plugins.easypick" },
+	{ import = "plugins.treesitter" },
+	{ import = "plugins.lspconfig" },
+	{ import = "plugins.lazydev" },
+	-- { import = "plugins.completion" },
+	{ import = "plugins.conform" },
+	{ import = "plugins.gitsigns" },
+	{ import = "plugins.whichkey" },
+	{ import = "plugins.todo" },
 
 	{
 		"nvim-lualine/lualine.nvim",
+		event = "VeryLazy",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			require("lualine").setup({ options = { theme = "molokai" } })
 		end,
 	},
-	{
-		"f-person/auto-dark-mode.nvim",
-		opts = {
-			update_interval = 1000,
-			set_dark_mode = function()
-				-- vim.api.nvim_set_option("background", "dark")
-				-- vim.cmd("colorscheme github_dark")
-				vim.cmd("colorscheme cyberdream")
-			end,
-			set_light_mode = function()
-				-- vim.api.nvim_set_option("background", "light")
-				vim.cmd("colorscheme modus_operandi")
-			end,
-		},
-	},
-	{ "miikanissi/modus-themes.nvim", priority = 1000, lazy = false },
-	{ "projekt0n/github-nvim-theme", priority = 1000, lazy = false },
-	{ "scottmckendry/cyberdream.nvim", priority = 1000, lazy = false },
+	-- {
+	-- 	"f-person/auto-dark-mode.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	opts = {
+	-- 		update_interval = 1000,
+	-- 		set_dark_mode = function()
+	-- 			-- vim.api.nvim_set_option("background", "dark")
+	-- 			-- vim.cmd("colorscheme github_dark")
+	-- 			vim.cmd("colorscheme cyberdream")
+	-- 		end,
+	-- 		set_light_mode = function()
+	-- 			-- vim.api.nvim_set_option("background", "light")
+	-- 			vim.cmd("colorscheme modus_operandi")
+	-- 		end,
+	-- 	},
+	-- },
+	-- { "miikanissi/modus-themes.nvim", lazy = true },
+	{ "scottmckendry/cyberdream.nvim", lazy = true },
+	-- { "projekt0n/github-nvim-theme", lazy = true },
 }, {
 	ui = {
 		-- If you are using a Nerd Font: set icons to an empty table which will use the
@@ -105,6 +115,7 @@ require("lazy").setup({
 
 require("mappings")
 require("pikachu").colorscheme()
+vim.cmd("colorscheme cyberdream")
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=4 sts=4 sw=4 et

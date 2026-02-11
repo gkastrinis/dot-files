@@ -1,6 +1,8 @@
 return {
 	"axkirillov/easypick.nvim",
-	requires = "nvim-telescope/telescope.nvim",
+	lazy = true,
+	cmd = "Easypick",
+	dependencies = "nvim-telescope/telescope.nvim",
 	config = function()
 		local easypick = require("easypick")
 		easypick.setup({
