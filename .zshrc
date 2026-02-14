@@ -78,3 +78,6 @@ source $HOME/Work/pyautoenv/pyautoenv.plugin.zsh
 
 eval "$(oh-my-posh init zsh --config ~/gkastrinis.info.json)"
 export PATH="$HOME/.local/bin:$PATH"
+
+# added by Snowflake SnowflakeCLI installer v1.0
+export PATH=/Applications/SnowflakeCLI.app/Contents/MacOS/:$PATH

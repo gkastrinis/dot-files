@@ -2,7 +2,6 @@ import Pkg
 using Revise
 
 #Pkg.instantiate(); Pkg.build("RAICode")
-#using RAICode.Compiler.Front: debug_set_query_layering!; debug_set_query_layering!(; enabled=true)
 
 atreplinit() do repl
     @eval using OhMyREPL
@@ -13,7 +12,6 @@ atreplinit() do repl
         OhMyREPL.Prompt.insert_keybindings()
         OhMyREPL.enable_fzf(true)
     end
-    # repl.options.confirm_exit = true
 end
 
 #=
