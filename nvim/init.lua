@@ -57,11 +57,18 @@ require("lazy").setup({
 	{ import = "plugins.treesitter" },
 	{ import = "plugins.lspconfig" },
 	{ import = "plugins.lazydev" },
-	-- { import = "plugins.completion" },
+	{ import = "plugins.completion" },
 	{ import = "plugins.conform" },
 	{ import = "plugins.gitsigns" },
 	{ import = "plugins.whichkey" },
 	{ import = "plugins.todo" },
+
+	{
+		"OXY2DEV/markview.nvim",
+		lazy = false,
+		-- Completion for `blink.cmp`
+		-- dependencies = { "saghen/blink.cmp" },
+	},
 
 	{
 		"nvim-lualine/lualine.nvim",
@@ -88,7 +95,7 @@ require("lazy").setup({
 	-- 		end,
 	-- 	},
 	-- },
-	-- { "miikanissi/modus-themes.nvim", lazy = true },
+	{ "miikanissi/modus-themes.nvim", lazy = true },
 	{ "scottmckendry/cyberdream.nvim", lazy = true },
 	-- { "projekt0n/github-nvim-theme", lazy = true },
 }, {
@@ -116,6 +123,7 @@ require("lazy").setup({
 require("mappings")
 require("pikachu").colorscheme()
 vim.cmd("colorscheme cyberdream")
+-- vim.cmd("colorscheme modus_operandi")
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=4 sts=4 sw=4 et

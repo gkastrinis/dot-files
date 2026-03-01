@@ -69,12 +69,12 @@ export PATH="/opt/homebrew/opt/python@3.13/libexec/bin:$PATH"
 
 # !! Contents within this block are managed by juliaup !!
 
-path=('/Users/georgekastrinis/.juliaup/bin' $path)
-export PATH
+# path=('/Users/georgekastrinis/.juliaup/bin' $path)
+# export PATH
 
 # <<< juliaup initialize <<<
 
-source $HOME/Work/pyautoenv/pyautoenv.plugin.zsh
+# source $HOME/Work/pyautoenv/pyautoenv.plugin.zsh
 
 eval "$(oh-my-posh init zsh --config ~/gkastrinis.info.json)"
 export PATH="$HOME/.local/bin:$PATH"
