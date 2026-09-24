@@ -1,3 +1,5 @@
 *~
 .DS_Store
 .shadowenv.d
+
+**/.claude/settings.local.json

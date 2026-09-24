@@ -4,6 +4,7 @@
 	signingkey = 6F8F256C7D93B9EE441FD603B2160BDF58B625D6
 [push]
 	followTags = true
+	default = current
 [alias]
 	st = status
 	ci = commit

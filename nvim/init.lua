@@ -95,9 +95,9 @@ require("lazy").setup({
 	-- 		end,
 	-- 	},
 	-- },
+	-- { "projekt0n/github-nvim-theme", lazy = true },
 	{ "miikanissi/modus-themes.nvim", lazy = true },
 	{ "scottmckendry/cyberdream.nvim", lazy = true },
-	-- { "projekt0n/github-nvim-theme", lazy = true },
 }, {
 	ui = {
 		-- If you are using a Nerd Font: set icons to an empty table which will use the
@@ -122,8 +122,12 @@ require("lazy").setup({
 
 require("mappings")
 require("pikachu").colorscheme()
-vim.cmd("colorscheme cyberdream")
+
+-- vim.cmd("colorscheme github_light")
+-- vim.cmd("colorscheme cyberdream")
+
 -- vim.cmd("colorscheme modus_operandi")
+vim.cmd("colorscheme modus_vivendi")
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=4 sts=4 sw=4 et

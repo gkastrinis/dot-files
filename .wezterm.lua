@@ -19,12 +19,15 @@ config.font = wezterm.font("VictorMono Nerd Font Propo", { weight = "Bold" })
 -- for example, this selects a Bold, Italic font variant.
 -- config.font = wezterm.font("JetBrains Mono", { weight = "Bold", italic = true })
 
-config.window_background_image = "/Users/georgekastrinis/Downloads/wallpapers/duck soup.png"
-config.window_background_image = "/Users/georgekastrinis/Downloads/wallpapers/cyberpunk-2077-1.jpeg"
-config.window_background_image = "/Users/georgekastrinis/Downloads/wallpapers/cyberpunk-2077-6.png"
 config.window_background_image = "/Users/georgekastrinis/Downloads/wallpapers/cyberpunk-2077-4.jpg"
 config.window_background_image = "/Users/georgekastrinis/Downloads/wallpapers/cyberpunk-2077-3.jpg"
+config.window_background_image = "/Users/georgekastrinis/Downloads/wallpapers/cyberpunk-2077-6.png"
 config.window_background_image = "/Users/georgekastrinis/Downloads/wallpapers/cyberpunk-2077-5.jpg"
+
+config.window_background_image = "/Users/georgekastrinis/Downloads/wallpapers/dune4.jpg"
+config.window_background_image = "/Users/georgekastrinis/Downloads/wallpapers/dune3.jpg"
+config.window_background_image = "/Users/georgekastrinis/Downloads/wallpapers/dune2.jpg"
+config.window_background_image = "/Users/georgekastrinis/Downloads/wallpapers/dune.jpeg"
 
 config.window_background_image_hsb = {
 	-- Darken the background image by reducing it to 1/3rd
