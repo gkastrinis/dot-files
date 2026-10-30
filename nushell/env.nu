@@ -16,7 +16,6 @@ $env.PATH = ($env.PATH | split row (char esep) | prepend [
     "/usr/local/bin"
     "/nix/var/nix/profiles/default/bin/"
     $"($env.HOME)/dot-files"
-    $"($env.HOME)/nvim-macos-x86_64-nightly/bin"
     "/opt/homebrew/opt/python@3.14/libexec/bin"
     "/opt/homebrew/bin"
     "/opt/homebrew/opt/openjdk/bin"
