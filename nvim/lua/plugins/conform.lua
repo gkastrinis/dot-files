@@ -32,10 +32,24 @@ return {
 		formatters_by_ft = {
 			lua = { "stylua" },
 			-- Conform can also run multiple formatters sequentially
+			-- Only remove unused imports on save; Ruff diagnostics are provided by nvim-lint.
 			python = { "ruff_fix" },
-			--
-			-- You can use 'stop_after_first' to run the first available formatter from the list
-			-- javascript = { "prettierd", "prettier", stop_after_first = true },
+		},
+		formatters = {
+			ruff_fix = {
+				-- Limit Ruff's save-time fixes to F401 (unused imports).
+				args = {
+					"check",
+					"--select=F401",
+					"--fix",
+					"--force-exclude",
+					"--exit-zero",
+					"--no-cache",
+					"--stdin-filename",
+					"$FILENAME",
+					"-",
+				},
+			},
 		},
 	},
 }

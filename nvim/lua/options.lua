@@ -61,7 +61,20 @@ vim.api.nvim_create_autocmd("BufNewFile", {
 	pattern = "*.py",
 	callback = function()
 		if vim.fn.line("$") == 1 and vim.fn.getline(1) == "" then
-			vim.cmd("0r ~/.config/nvim/blueprints/blueprint.py")
+			local blueprint = vim.fn.stdpath("config") .. "/blueprints/blueprint.py"
+			vim.cmd("0r " .. vim.fn.fnameescape(blueprint))
 		end
 	end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "odin",
+	callback = function()
+		vim.opt_local.textwidth = 92
+		vim.opt_local.colorcolumn = "+1"
+	end,
+})
+
+vim.filetype.add({
+	extension = { tr = "go" },
 })

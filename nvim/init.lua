@@ -58,6 +58,7 @@ require("lazy").setup({
 	{ import = "plugins.lspconfig" },
 	{ import = "plugins.lazydev" },
 	{ import = "plugins.completion" },
+	{ import = "plugins.lint" },
 	{ import = "plugins.conform" },
 	{ import = "plugins.gitsigns" },
 	{ import = "plugins.whichkey" },
@@ -65,9 +66,7 @@ require("lazy").setup({
 
 	{
 		"OXY2DEV/markview.nvim",
-		lazy = false,
-		-- Completion for `blink.cmp`
-		-- dependencies = { "saghen/blink.cmp" },
+		ft = "markdown",
 	},
 
 	{
@@ -78,26 +77,7 @@ require("lazy").setup({
 			require("lualine").setup({ options = { theme = "molokai" } })
 		end,
 	},
-	-- {
-	-- 	"f-person/auto-dark-mode.nvim",
-	-- 	lazy = false,
-	-- 	priority = 1000,
-	-- 	opts = {
-	-- 		update_interval = 1000,
-	-- 		set_dark_mode = function()
-	-- 			-- vim.api.nvim_set_option("background", "dark")
-	-- 			-- vim.cmd("colorscheme github_dark")
-	-- 			vim.cmd("colorscheme cyberdream")
-	-- 		end,
-	-- 		set_light_mode = function()
-	-- 			-- vim.api.nvim_set_option("background", "light")
-	-- 			vim.cmd("colorscheme modus_operandi")
-	-- 		end,
-	-- 	},
-	-- },
-	-- { "projekt0n/github-nvim-theme", lazy = true },
 	{ "miikanissi/modus-themes.nvim", lazy = true },
-	{ "scottmckendry/cyberdream.nvim", lazy = true },
 }, {
 	ui = {
 		-- If you are using a Nerd Font: set icons to an empty table which will use the
@@ -121,13 +101,17 @@ require("lazy").setup({
 })
 
 require("mappings")
-require("pikachu").colorscheme()
-
--- vim.cmd("colorscheme github_light")
--- vim.cmd("colorscheme cyberdream")
 
 -- vim.cmd("colorscheme modus_operandi")
 vim.cmd("colorscheme modus_vivendi")
+
+vim.opt.termguicolors = true
+vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE" })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=4 sts=4 sw=4 et
