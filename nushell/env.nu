@@ -4,14 +4,10 @@ $env.EDITOR = "nvim"
 $env.config.edit_mode = "vi"
 
 # Locale settings
-$env.LC_ALL = "en_US.UTF-8"
 $env.LANG = "en_US.UTF-8"
-$env.LANGUAGE = "en_US.UTF-8"
-$env.TERM = "xterm-256color"
 
 # PATH configuration
 $env.PATH = ($env.PATH | split row (char esep) | prepend [
-    "."
     "/usr/local/sbin"
     "/usr/local/bin"
     "/nix/var/nix/profiles/default/bin/"
