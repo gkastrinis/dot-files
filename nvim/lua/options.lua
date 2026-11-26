@@ -35,6 +35,9 @@ vim.o.confirm = true
 -- vim.o.textwidth = 92
 -- vim.o.colorcolumn = "93"
 
+-- Open files fully unfolded (treesitter folds set in plugins/treesitter.lua)
+vim.o.foldlevelstart = 99
+
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.softtabstop = 4
@@ -49,6 +52,16 @@ end)
 
 -- See `:help lua-guide-autocommands`
 -- Highlight when yanking (copying) text
+vim.api.nvim_create_autocmd("FocusLost", {
+	desc = "Save the current file when Neovim loses focus",
+	group = vim.api.nvim_create_augroup("save-on-focus-lost", { clear = true }),
+	callback = function()
+		if vim.bo.modified and vim.bo.buftype == "" then
+			vim.cmd("silent! update")
+		end
+	end,
+})
+
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
